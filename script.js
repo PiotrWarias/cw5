@@ -65,5 +65,29 @@
     } 
   })
 
-
+  cw4.addEventListener("click", function () {
+    answer.innerHTML = "Processing...";
+    fetch('https://jsonplaceholder.typicode.com/posts', {
+  method: 'POST',
+  body: JSON.stringify({
+    id: 101,
+    title: 'cos',
+    body: 'fajnego',
+    userId: 1,
+  }),
+  headers: {
+    'Content-type': 'application/json; charset=UTF-8',
+  },
+})
+  .then((response) => response.json())
+  .then((json) => console.log(json));
+function appendData(data){
+      answer.innerHTML = "";
+      for (var i = 100; i <101; i++){
+        var div = document.createElement("div");
+        div.innerHTML= 'UserID:' + data[i].userId + '<br> id:' + data[i].id + '  <br>title: ' + data[i].title + '<br> body: '+ data[i].body + '<br><br>';
+        answer.appendChild(div);
+      }
+    }
+ })
 })();
